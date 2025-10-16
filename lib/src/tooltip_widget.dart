@@ -132,7 +132,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
   // This is Default height considered at the start of this package
   double tooltipHeight = 120;
 
-  final _withArrowToolTipPadding = 16.0;
+  final _withArrowToolTipPadding = 24.0;
   final _withOutArrowToolTipPadding = 10.0;
 
   // To store Tooltip action size
@@ -465,8 +465,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
       paddingBottom = _withOutArrowToolTipPadding;
     }
 
-    const arrowWidth = 18.0;
-    const arrowHeight = 9.0;
+    const arrowWidth = 49.0;
+    const arrowHeight = 20.0;
 
     if (!widget.disableScaleAnimation && widget.isTooltipDismissed) {
       _scaleAnimationController.reverse();
@@ -860,18 +860,27 @@ class _Arrow extends CustomPainter {
   }
 
   Path getTrianglePath(double x, double y) {
+    const double radius = 6; // степень закругления
+
     if (isUpArrow) {
       return Path()
         ..moveTo(0, y)
-        ..lineTo(x / 2, 0)
+      // левая кромка
+        ..lineTo(x / 2 - radius, radius)
+      // закругляем верхнюю часть (носик)
+        ..quadraticBezierTo(x / 2, 0, x / 2 + radius, radius)
+      // правая кромка
         ..lineTo(x, y)
-        ..lineTo(0, y);
+        ..close();
     }
+
+    // вниз направленная стрелка
     return Path()
       ..moveTo(0, 0)
+      ..lineTo(x / 2 - radius, y - radius)
+      ..quadraticBezierTo(x / 2, y, x / 2 + radius, y - radius)
       ..lineTo(x, 0)
-      ..lineTo(x / 2, y)
-      ..lineTo(0, 0);
+      ..close();
   }
 
   @override

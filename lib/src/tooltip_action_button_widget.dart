@@ -21,7 +21,7 @@ class TooltipActionButtonWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return config.button ??
-        GestureDetector(
+        InkWell(
           onTap: handleOnTap,
           child: Container(
             padding: config.padding,
