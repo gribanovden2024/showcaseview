@@ -35,8 +35,7 @@ class TooltipActionButtonWidget extends StatelessWidget {
               children: [
                 if (config.leadIcon != null)
                   Padding(
-                    padding: config.leadIcon?.padding ??
-                        const EdgeInsets.only(right: 5),
+                    padding: config.leadIcon?.padding ?? const EdgeInsets.only(right: 5),
                     child: config.leadIcon?.icon,
                   ),
                 Text(
@@ -45,8 +44,7 @@ class TooltipActionButtonWidget extends StatelessWidget {
                 ),
                 if (config.tailIcon != null)
                   Padding(
-                    padding: config.tailIcon?.padding ??
-                        const EdgeInsets.only(left: 5),
+                    padding: config.tailIcon?.padding ?? const EdgeInsets.only(left: 5),
                     child: config.tailIcon?.icon,
                   ),
               ],

@@ -154,9 +154,7 @@ class ShowCaseWidget extends StatefulWidget {
   });
 
   static GlobalKey? activeTargetWidget(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<_InheritedShowCaseView>()
-        ?.activeWidgetIds;
+    return context.dependOnInheritedWidgetOfExactType<_InheritedShowCaseView>()?.activeWidgetIds;
   }
 
   static ShowCaseWidgetState of(BuildContext context) {
@@ -203,14 +201,11 @@ class ShowCaseWidgetState extends State<ShowCaseWidget> {
 
   bool get isShowCaseCompleted => ids == null && activeWidgetId == null;
 
-  List<GlobalKey> get hiddenFloatingActionKeys =>
-      _hideFloatingWidgetKeys.keys.toList();
+  List<GlobalKey> get hiddenFloatingActionKeys => _hideFloatingWidgetKeys.keys.toList();
 
   /// This Stores keys of showcase for which we will hide the
   /// [globalFloatingActionWidget].
-  late final _hideFloatingWidgetKeys = {
-    for (final item in widget.hideFloatingActionWidgetForShowcase) item: true
-  };
+  late final _hideFloatingWidgetKeys = {for (final item in widget.hideFloatingActionWidgetForShowcase) item: true};
 
   /// Returns value of [ShowCaseWidget.blurValue]
   double get blurValue => widget.blurValue;
@@ -229,9 +224,7 @@ class ShowCaseWidgetState extends State<ShowCaseWidget> {
   /// Return a [widget.globalFloatingActionWidget] if not need to hide this for
   /// current showcase.
   FloatingActionBuilderCallback? get globalFloatingActionWidget =>
-      _hideFloatingWidgetKeys[getCurrentActiveShowcaseKey] ?? false
-          ? null
-          : widget.globalFloatingActionWidget;
+      _hideFloatingWidgetKeys[getCurrentActiveShowcaseKey] ?? false ? null : widget.globalFloatingActionWidget;
 
   @override
   void initState() {
@@ -246,9 +239,7 @@ class ShowCaseWidgetState extends State<ShowCaseWidget> {
       if (!mounted) return;
       final rootWidget = context.findAncestorStateOfType<State<WidgetsApp>>();
       rootRenderObject = rootWidget?.context.findRenderObject() as RenderBox?;
-      rootWidgetSize = rootWidget == null
-          ? MediaQuery.of(context).size
-          : rootRenderObject?.size;
+      rootWidgetSize = rootWidget == null ? MediaQuery.of(context).size : rootRenderObject?.size;
     });
   }
 
@@ -369,6 +360,5 @@ class _InheritedShowCaseView extends InheritedWidget {
   });
 
   @override
-  bool updateShouldNotify(_InheritedShowCaseView oldWidget) =>
-      oldWidget.activeWidgetIds != activeWidgetIds;
+  bool updateShouldNotify(_InheritedShowCaseView oldWidget) => oldWidget.activeWidgetIds != activeWidgetIds;
 }

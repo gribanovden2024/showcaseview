@@ -1,6 +1,5 @@
 ![Showcase View - Simform LLC.](https://raw.githubusercontent.com/SimformSolutionsPvtLtd/flutter_showcaseview/master/preview/banner.png)
 
-
 # ShowCaseView
 
 [![Build](https://github.com/SimformSolutionsPvtLtd/flutter_showcaseview/actions/workflows/flutter.yaml/badge.svg?branch=master)](https://github.com/SimformSolutionsPvtLtd/flutter_showcaseview/actions) [![showcaseview](https://img.shields.io/pub/v/showcaseview?label=showcaseview)](https://pub.dev/packages/showcaseview)
@@ -20,6 +19,7 @@ to `descriptionTextAlign` to correspond it more with the TextAlign property.`tit
 and `descriptionAlignment` will be used for widget alignment.
 
 Before:
+
 ```dart
 Showcase(
   titleAlignment: TextAlign.center,
@@ -28,6 +28,7 @@ Showcase(
 ```
 
 After:
+
 ```dart
 Showcase(
   titleTextAlign: TextAlign.center,
@@ -36,9 +37,11 @@ Showcase(
 ```
 
 ## Migration guide for release 3.0.0
+
 Removed builder widget from `ShowCaseWidget` and replaced it with builder function
 
 Before:
+
 ```dart
 ShowCaseWidget(
   builder: Builder(
@@ -48,6 +51,7 @@ ShowCaseWidget(
 ```
 
 After:
+
 ```dart
 ShowCaseWidget(
   builder : (context) => Somewidget(),
@@ -58,7 +62,7 @@ ShowCaseWidget(
 
 1.  Add dependency to `pubspec.yaml`
 
-    *Get the latest version in the 'Installing' tab on [pub.dev](https://pub.dev/packages/showcaseview)*
+    _Get the latest version in the 'Installing' tab on [pub.dev](https://pub.dev/packages/showcaseview)_
 
 ```dart
 dependencies:
@@ -66,11 +70,13 @@ dependencies:
 ```
 
 2.  Import the package
+
 ```dart
 import 'package:showcaseview/showcaseview.dart';
 ```
 
 3. Adding a `ShowCaseWidget` widget.
+
 ```dart
 ShowCaseWidget(
   builder:  (context)=> Somewidget(),
@@ -78,6 +84,7 @@ ShowCaseWidget(
 ```
 
 4. Adding a `Showcase` widget.
+
 ```dart
 GlobalKey _one = GlobalKey();
 GlobalKey _two = GlobalKey();
@@ -111,6 +118,7 @@ Showcase.withWidget(
 ```
 
 5. Starting the `ShowCase`
+
 ```dart
 someEvent(){
     ShowCaseWidget.of(context).startShowCase([_one, _two, _three]);
@@ -128,7 +136,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) =>
 ## Functions of `ShowCaseWidget.of(context)`:
 
 | Function Name                            | Description              |
-|------------------------------------------|--------------------------|
+| ---------------------------------------- | ------------------------ |
 | startShowCase(List<GlobalKey> widgetIds) | Starting the showcase    |
 | next()                                   | Starts next showcase     |
 | previous()                               | Starts previous showcase |
@@ -137,7 +145,7 @@ WidgetsBinding.instance.addPostFrameCallback((_) =>
 ## Properties of `ShowCaseWidget`:
 
 | Name                                | Type                                         | Default Behaviour            | Description                                                                    |
-|-------------------------------------|----------------------------------------------|------------------------------|--------------------------------------------------------------------------------|
+| ----------------------------------- | -------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------ |
 | builder                             | Builder                                      |                              |                                                                                |
 | blurValue                           | double                                       | 0                            | Provides blur effect on overlay.                                               |
 | autoPlay                            | bool                                         | false                        | Automatically display Next showcase.                                           |
@@ -159,83 +167,82 @@ WidgetsBinding.instance.addPostFrameCallback((_) =>
 | globalFloatingActionWidget          | FloatingActionWidget Function(BuildContext)? |                              | Global Config for tooltip action to auto apply for all the toolTip .           |
 | hideFloatingActionWidgetForShowcase | List<GlobalKey>                              | []                           | Hides globalFloatingActionWidget for the provided showcase widget keys.        |
 
-
 ## Properties of `Showcase` and `Showcase.withWidget`:
 
 | Name                         | Type                       | Default Behaviour                                | Description                                                                                        | `Showcase` | `ShowCaseWidget` |
-|------------------------------|----------------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------|------------|------------------|
-| key                          | GlobalKey                  |                                                  | Unique Global key for each showcase.                                                               | ✅          | ✅                |
-| child                        | Widget                     |                                                  | The Target widget that you want to be showcased                                                    | ✅          | ✅                |
-| title                        | String?                    |                                                  | Title of default tooltip                                                                           | ✅          |                  |
-| description                  | String?                    |                                                  | Description of default tooltip                                                                     | ✅          |                  |
-| container                    | Widget?                    |                                                  | Allows to create custom tooltip widget.                                                            |            | ✅                |
-| height                       | double?                    |                                                  | Height of custom tooltip widget                                                                    |            | ✅                |
-| width                        | double?                    |                                                  | Width of custom tooltip widget                                                                     |            | ✅                |
-| titleTextStyle               | TextStyle?                 |                                                  | Text Style of title                                                                                | ✅          |                  |
-| descTextStyle                | TextStyle?                 |                                                  | Text Style of description                                                                          | ✅          |                  |
-| titleTextAlign               | TextAlign                  | TextAlign.start                                  | Alignment of title text                                                                            | ✅          |                  |
-| descriptionTextAlign         | TextAlign                  | TextAlign.start                                  | Alignment of description text                                                                      | ✅          |                  |
-| titleAlignment               | AlignmentGeometry          | Alignment.center                                 | Alignment of title                                                                                 | ✅          |                  |
-| descriptionAlignment         | AlignmentGeometry          | Alignment.center                                 | Alignment of description                                                                           | ✅          |                  |
-| targetShapeBorder            | ShapeBorder                |                                                  | If `targetBorderRadius` param is not provided then it applies shape border to target widget        | ✅          | ✅                |
-| targetBorderRadius           | BorderRadius?              |                                                  | Border radius of target widget                                                                     | ✅          | ✅                |
-| tooltipBorderRadius          | BorderRadius?              | BorderRadius.circular(8.0)                       | Border radius of tooltip                                                                           | ✅          |                  |
-| blurValue                    | double?                    | `ShowCaseWidget.blurValue`                       | Gaussian blur effect on overlay                                                                    | ✅          | ✅                |
-| tooltipPadding               | EdgeInsets                 | EdgeInsets.symmetric(vertical: 8, horizontal: 8) | Padding to tooltip content                                                                         | ✅          |                  |
-| targetPadding                | EdgeInsets                 | EdgeInsets.zero                                  | Padding to target widget                                                                           | ✅          | ✅                |
-| overlayOpacity               | double                     | 0.75                                             | Opacity of overlay layer                                                                           | ✅          | ✅                |
-| overlayColor                 | Color                      | Colors.black45                                   | Color of overlay layer                                                                             | ✅          | ✅                |
-| tooltipBackgroundColor       | Color                      | Colors.white                                     | Background Color of default tooltip                                                                | ✅          |                  |
-| textColor                    | Color                      | Colors.black                                     | Color of tooltip text                                                                              | ✅          |                  |
-| scrollLoadingWidget          | Widget                     |                                                  | Loading widget on overlay until active showcase is visible to viewport when `autoScroll` is enable | ✅          | ✅                |
-| movingAnimationDuration      | Duration                   | Duration(milliseconds: 2000)                     | Duration of time this moving animation should last.                                                | ✅          | ✅                |
-| showArrow                    | bool                       | true                                             | Shows tooltip with arrow                                                                           | ✅          |                  |
-| disableDefaultTargetGestures | bool                       | false                                            | disable default gestures of target widget                                                          | ✅          | ✅                |
-| disposeOnTap                 | bool?                      | false                                            | Dismiss all showcases on target/tooltip tap                                                        | ✅          | ✅                |
-| disableMovingAnimation       | bool?                      | `ShowCaseWidget.disableMovingAnimation`          | Disable bouncing/moving transition                                                                 | ✅          | ✅                |
-| disableScaleAnimation        | bool?                      | `ShowCaseWidget.disableScaleAnimation`           | Disable initial scale transition when showcase is being started and completed                      | ✅          |                  |
-| scaleAnimationDuration       | Duration                   | Duration(milliseconds: 300)                      | Duration of time scale animation should last.                                                      | ✅          |                  |
-| scaleAnimationCurve          | Curve                      | Curves.easeIn                                    | Curve to use in scale animation.                                                                   | ✅          |                  |
-| scaleAnimationAlignment      | Alignment?                 |                                                  | Origin of the coordinate in which the scale takes place, relative to the size of the box.          | ✅          |                  |
-| onToolTipClick               | VoidCallback?              |                                                  | Triggers when tooltip is being clicked.                                                            | ✅          |                  |
-| onTargetClick                | VoidCallback?              |                                                  | Triggers when target widget is being clicked                                                       | ✅          | ✅                |
-| onTargetDoubleTap            | VoidCallback?              |                                                  | Triggers when target widget is being double clicked                                                | ✅          | ✅                |
-| onTargetLongPress            | VoidCallback?              |                                                  | Triggers when target widget is being long pressed                                                  | ✅          | ✅                |
-| onBarrierClick               | VoidCallback?              |                                                  | Triggers when barrier is clicked                                                                   | ✅          | ✅                |
-| tooltipPosition              | TooltipPosition?           |                                                  | Defines vertical position of tooltip respective to Target widget                                   | ✅          | ✅                |
-| titlePadding                 | EdgeInsets?                | EdgeInsets.zero                                  | Padding to title                                                                                   | ✅          |                  |
-| descriptionPadding           | EdgeInsets?                | EdgeInsets.zero                                  | Padding to description                                                                             | ✅          |                  |
-| titleTextDirection           | TextDirection?             |                                                  | Give textDirection to title                                                                        | ✅          |                  |
-| descriptionTextDirection     | TextDirection?             |                                                  | Give textDirection to description                                                                  | ✅          |                  |
-| descriptionTextDirection     | TextDirection?             |                                                  | Give textDirection to description                                                                  | ✅          |                  |
-| disableBarrierInteraction    | bool                       | false                                            | Disables barrier interaction for a particular showCase                                             | ✅          | ✅                |
-| toolTipSlideEndDistance      | double                     | 7                                                | Defines motion range for tooltip slide animation                                                   | ✅          | ✅                |
-| tooltipActions               | List<TooltipActionButton>? | []                                               | Provide a list of tooltip actions                                                                  | ✅          | ✅                |
-| tooltipActionConfig          | TooltipActionConfig?       |                                                  | Give configurations (alignment, position, etc...) to the tooltip actionbar                         | ✅          | ✅                |
-| enableAutoScroll             | bool?                      | ShowCaseWidget.enableAutoScroll                  | This is used to override the `ShowCaseWidget.enableAutoScroll` behaviour                           | ✅          | ✅                |
-| floatingActionWidget         | FloatingActionWidget       |                                                  | Provided a floating static action widget to show at any place on the screen                        | ✅          | ✅                |
+| ---------------------------- | -------------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------- | ---------- | ---------------- |
+| key                          | GlobalKey                  |                                                  | Unique Global key for each showcase.                                                               | ✅         | ✅               |
+| child                        | Widget                     |                                                  | The Target widget that you want to be showcased                                                    | ✅         | ✅               |
+| title                        | String?                    |                                                  | Title of default tooltip                                                                           | ✅         |                  |
+| description                  | String?                    |                                                  | Description of default tooltip                                                                     | ✅         |                  |
+| container                    | Widget?                    |                                                  | Allows to create custom tooltip widget.                                                            |            | ✅               |
+| height                       | double?                    |                                                  | Height of custom tooltip widget                                                                    |            | ✅               |
+| width                        | double?                    |                                                  | Width of custom tooltip widget                                                                     |            | ✅               |
+| titleTextStyle               | TextStyle?                 |                                                  | Text Style of title                                                                                | ✅         |                  |
+| descTextStyle                | TextStyle?                 |                                                  | Text Style of description                                                                          | ✅         |                  |
+| titleTextAlign               | TextAlign                  | TextAlign.start                                  | Alignment of title text                                                                            | ✅         |                  |
+| descriptionTextAlign         | TextAlign                  | TextAlign.start                                  | Alignment of description text                                                                      | ✅         |                  |
+| titleAlignment               | AlignmentGeometry          | Alignment.center                                 | Alignment of title                                                                                 | ✅         |                  |
+| descriptionAlignment         | AlignmentGeometry          | Alignment.center                                 | Alignment of description                                                                           | ✅         |                  |
+| targetShapeBorder            | ShapeBorder                |                                                  | If `targetBorderRadius` param is not provided then it applies shape border to target widget        | ✅         | ✅               |
+| targetBorderRadius           | BorderRadius?              |                                                  | Border radius of target widget                                                                     | ✅         | ✅               |
+| tooltipBorderRadius          | BorderRadius?              | BorderRadius.circular(8.0)                       | Border radius of tooltip                                                                           | ✅         |                  |
+| blurValue                    | double?                    | `ShowCaseWidget.blurValue`                       | Gaussian blur effect on overlay                                                                    | ✅         | ✅               |
+| tooltipPadding               | EdgeInsets                 | EdgeInsets.symmetric(vertical: 8, horizontal: 8) | Padding to tooltip content                                                                         | ✅         |                  |
+| targetPadding                | EdgeInsets                 | EdgeInsets.zero                                  | Padding to target widget                                                                           | ✅         | ✅               |
+| overlayOpacity               | double                     | 0.75                                             | Opacity of overlay layer                                                                           | ✅         | ✅               |
+| overlayColor                 | Color                      | Colors.black45                                   | Color of overlay layer                                                                             | ✅         | ✅               |
+| tooltipBackgroundColor       | Color                      | Colors.white                                     | Background Color of default tooltip                                                                | ✅         |                  |
+| textColor                    | Color                      | Colors.black                                     | Color of tooltip text                                                                              | ✅         |                  |
+| scrollLoadingWidget          | Widget                     |                                                  | Loading widget on overlay until active showcase is visible to viewport when `autoScroll` is enable | ✅         | ✅               |
+| movingAnimationDuration      | Duration                   | Duration(milliseconds: 2000)                     | Duration of time this moving animation should last.                                                | ✅         | ✅               |
+| showArrow                    | bool                       | true                                             | Shows tooltip with arrow                                                                           | ✅         |                  |
+| disableDefaultTargetGestures | bool                       | false                                            | disable default gestures of target widget                                                          | ✅         | ✅               |
+| disposeOnTap                 | bool?                      | false                                            | Dismiss all showcases on target/tooltip tap                                                        | ✅         | ✅               |
+| disableMovingAnimation       | bool?                      | `ShowCaseWidget.disableMovingAnimation`          | Disable bouncing/moving transition                                                                 | ✅         | ✅               |
+| disableScaleAnimation        | bool?                      | `ShowCaseWidget.disableScaleAnimation`           | Disable initial scale transition when showcase is being started and completed                      | ✅         |                  |
+| scaleAnimationDuration       | Duration                   | Duration(milliseconds: 300)                      | Duration of time scale animation should last.                                                      | ✅         |                  |
+| scaleAnimationCurve          | Curve                      | Curves.easeIn                                    | Curve to use in scale animation.                                                                   | ✅         |                  |
+| scaleAnimationAlignment      | Alignment?                 |                                                  | Origin of the coordinate in which the scale takes place, relative to the size of the box.          | ✅         |                  |
+| onToolTipClick               | VoidCallback?              |                                                  | Triggers when tooltip is being clicked.                                                            | ✅         |                  |
+| onTargetClick                | VoidCallback?              |                                                  | Triggers when target widget is being clicked                                                       | ✅         | ✅               |
+| onTargetDoubleTap            | VoidCallback?              |                                                  | Triggers when target widget is being double clicked                                                | ✅         | ✅               |
+| onTargetLongPress            | VoidCallback?              |                                                  | Triggers when target widget is being long pressed                                                  | ✅         | ✅               |
+| onBarrierClick               | VoidCallback?              |                                                  | Triggers when barrier is clicked                                                                   | ✅         | ✅               |
+| tooltipPosition              | TooltipPosition?           |                                                  | Defines position of tooltip relative to Target widget (top, bottom, left, right)                   | ✅         | ✅               |
+| titlePadding                 | EdgeInsets?                | EdgeInsets.zero                                  | Padding to title                                                                                   | ✅         |                  |
+| descriptionPadding           | EdgeInsets?                | EdgeInsets.zero                                  | Padding to description                                                                             | ✅         |                  |
+| titleTextDirection           | TextDirection?             |                                                  | Give textDirection to title                                                                        | ✅         |                  |
+| descriptionTextDirection     | TextDirection?             |                                                  | Give textDirection to description                                                                  | ✅         |                  |
+| descriptionTextDirection     | TextDirection?             |                                                  | Give textDirection to description                                                                  | ✅         |                  |
+| disableBarrierInteraction    | bool                       | false                                            | Disables barrier interaction for a particular showCase                                             | ✅         | ✅               |
+| toolTipSlideEndDistance      | double                     | 7                                                | Defines motion range for tooltip slide animation                                                   | ✅         | ✅               |
+| tooltipActions               | List<TooltipActionButton>? | []                                               | Provide a list of tooltip actions                                                                  | ✅         | ✅               |
+| tooltipActionConfig          | TooltipActionConfig?       |                                                  | Give configurations (alignment, position, etc...) to the tooltip actionbar                         | ✅         | ✅               |
+| enableAutoScroll             | bool?                      | ShowCaseWidget.enableAutoScroll                  | This is used to override the `ShowCaseWidget.enableAutoScroll` behaviour                           | ✅         | ✅               |
+| floatingActionWidget         | FloatingActionWidget       |                                                  | Provided a floating static action widget to show at any place on the screen                        | ✅         | ✅               |
 
 ## Properties of `TooltipActionButton` and `TooltipActionButton.custom`:
 
 | Name                        | Type                | Default Behaviour                                | Description                                                | `TooltipActionButton` | `TooltipActionButton.custom` |
-|-----------------------------|---------------------|--------------------------------------------------|------------------------------------------------------------|-----------------------|------------------------------|
-| button                      | Widget              |                                                  | Provide custom tooltip action button widget                |                       | ✅                            |
-| type                        | TooltipActionButton |                                                  | Type of action button (next, skip, previous)               | ✅                     |                              |
-| backgroundColor             | Color?              |                                                  | Give background color to action button                     | ✅                     |                              |
-| borderRadius                | BorderRadius?       | BorderRadius.all(Radius.circular(50))            | Give border radius to action button                        | ✅                     |                              |
-| textStyle                   | TextStyle?          |                                                  | Give text styles to the name of button                     | ✅                     |                              |
-| padding                     | EdgeInsets?         | EdgeInsets.symmetric(horizontal: 15,vertical: 4) | Give padding to button content                             | ✅                     |                              |
-| leadIcon                    | ActionButtonIcon?   |                                                  | Add icon at first before name in action button             | ✅                     |                              |
-| tailIcon                    | ActionButtonIcon?   |                                                  | Add icon at last after name in action button               | ✅                     |                              |
-| name                        | String?             |                                                  | Action button name                                         | ✅                     |                              |
-| onTap                       | VoidCallback?       |                                                  | Triggers when action button is tapped                      | ✅                     |                              |
-| border                      | Border?             |                                                  | Give border custom border to the action widget             | ✅                     |                              |
-| hideActionWidgetForShowcase | List<GlobalKey>     | []                                               | Hide This action widget for provided list of showcase keys | ✅                     |                              |
+| --------------------------- | ------------------- | ------------------------------------------------ | ---------------------------------------------------------- | --------------------- | ---------------------------- |
+| button                      | Widget              |                                                  | Provide custom tooltip action button widget                |                       | ✅                           |
+| type                        | TooltipActionButton |                                                  | Type of action button (next, skip, previous)               | ✅                    |                              |
+| backgroundColor             | Color?              |                                                  | Give background color to action button                     | ✅                    |                              |
+| borderRadius                | BorderRadius?       | BorderRadius.all(Radius.circular(50))            | Give border radius to action button                        | ✅                    |                              |
+| textStyle                   | TextStyle?          |                                                  | Give text styles to the name of button                     | ✅                    |                              |
+| padding                     | EdgeInsets?         | EdgeInsets.symmetric(horizontal: 15,vertical: 4) | Give padding to button content                             | ✅                    |                              |
+| leadIcon                    | ActionButtonIcon?   |                                                  | Add icon at first before name in action button             | ✅                    |                              |
+| tailIcon                    | ActionButtonIcon?   |                                                  | Add icon at last after name in action button               | ✅                    |                              |
+| name                        | String?             |                                                  | Action button name                                         | ✅                    |                              |
+| onTap                       | VoidCallback?       |                                                  | Triggers when action button is tapped                      | ✅                    |                              |
+| border                      | Border?             |                                                  | Give border custom border to the action widget             | ✅                    |                              |
+| hideActionWidgetForShowcase | List<GlobalKey>     | []                                               | Hide This action widget for provided list of showcase keys | ✅                    |                              |
 
 ## Properties of `TooltipActionConfig`:
 
 | Name                       | Type                   | Default Behaviour              | Description                                       |
-|----------------------------|------------------------|:-------------------------------|---------------------------------------------------|
+| -------------------------- | ---------------------- | :----------------------------- | ------------------------------------------------- |
 | alignment                  | MainAxisAlignment      | MainAxisAlignment.spaceBetween | Horizontal Alignment of tooltip action buttons    |
 | crossAxisAlignment         | CrossAxisAlignment     | CrossAxisAlignment.start       | Vertical Alignment of tooltip action buttons      |
 | actionGap                  | double?                | 5                              | Horizontal gap between the tooltip action buttons |
@@ -245,6 +252,39 @@ WidgetsBinding.instance.addPostFrameCallback((_) =>
 ## How to use
 
 Check out the **example** app in the [example](example) directory or the 'Example' tab on pub.dartlang.org for a more complete example.
+
+### Tooltip Positioning
+
+You can specify the position of the tooltip relative to the target widget using the `tooltipPosition` parameter. The tooltip supports four positions: `top`, `bottom`, `left`, and `right`.
+
+```dart
+// Display tooltip on the left side of the target widget
+Showcase(
+  key: _key,
+  title: 'Left Tooltip',
+  description: 'This tooltip appears on the left',
+  tooltipPosition: TooltipPosition.left,
+  child: YourWidget(),
+)
+
+// Display tooltip on the right side of the target widget
+Showcase(
+  key: _key,
+  title: 'Right Tooltip',
+  description: 'This tooltip appears on the right',
+  tooltipPosition: TooltipPosition.right,
+  child: YourWidget(),
+)
+
+// If tooltipPosition is not specified, the position will be
+// automatically determined based on available space
+Showcase(
+  key: _key,
+  title: 'Auto Tooltip',
+  description: 'Position determined automatically',
+  child: YourWidget(),
+)
+```
 
 ## Scrolling to active showcase
 
@@ -269,7 +309,7 @@ ShowCaseWidget(
        // If showcase widget is at offset 1000 in the listview.
        // If you don't know the exact position of the showcase widget,
        // You can provide nearest possible location.
-       // 
+       //
        // In this case providing 990 instead of 1000 will work as well.
         _controller.jumpTo(1000);
       });
@@ -292,7 +332,6 @@ ShowCaseWidget(
      <td align="center"><a href="https://github.com/Flamingloon"><img src="https://avatars.githubusercontent.com/u/81063988?v=4" width="100px;" alt=""/><br /><sub><b>Sahil Totala</b></sub></a></td>
   </tr>
 </table>
-
 
 ## License
 

@@ -35,8 +35,7 @@ class ActionWidget extends StatelessWidget {
         padding: getWidgetPadding,
         child: Row(
           mainAxisSize: width == null ? MainAxisSize.min : MainAxisSize.max,
-          mainAxisAlignment:
-              width == null ? MainAxisAlignment.start : alignment,
+          mainAxisAlignment: width == null ? MainAxisAlignment.start : alignment,
           crossAxisAlignment: crossAxisAlignment,
           textBaseline: tooltipActionConfig.textBaseline,
           children: children,

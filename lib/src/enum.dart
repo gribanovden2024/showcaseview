@@ -22,7 +22,7 @@
 
 import 'showcase_widget.dart';
 
-enum TooltipPosition { top, bottom }
+enum TooltipPosition { top, bottom, left, right }
 
 enum TooltipActionPosition {
   outside,

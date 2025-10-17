@@ -24,8 +24,7 @@ import 'package:flutter/material.dart';
 
 import 'showcase_widget.dart';
 
-typedef OverlayBuilderCallback = Widget Function(
-    BuildContext, Rect anchorBounds, Offset anchor);
+typedef OverlayBuilderCallback = Widget Function(BuildContext, Rect anchorBounds, Offset anchor);
 
 /// Displays an overlay Widget anchored directly above the center of this
 /// [AnchoredOverlay].
@@ -84,10 +83,7 @@ class AnchoredOverlay extends StatelessWidget {
                 Offset.zero;
 
             /// Provide a default anchorBounds if box is null.
-            final anchorBounds = (topLeft.dx.isNaN ||
-                    topLeft.dy.isNaN ||
-                    bottomRight.dx.isNaN ||
-                    bottomRight.dy.isNaN)
+            final anchorBounds = (topLeft.dx.isNaN || topLeft.dy.isNaN || bottomRight.dx.isNaN || bottomRight.dy.isNaN)
                 ? const Rect.fromLTRB(0.0, 0.0, 0.0, 0.0)
                 : Rect.fromLTRB(
                     topLeft.dx,
@@ -189,8 +185,7 @@ class _OverlayBuilderState extends State<OverlayBuilder> {
     if (mounted) {
       final showCaseContext = ShowCaseWidget.of(context).context;
       // TODO: switch to Overlay.maybeOf once we support dart 2.19 minimum.
-      final showCaseOverlay =
-          showCaseContext.findAncestorStateOfType<OverlayState>();
+      final showCaseOverlay = showCaseContext.findAncestorStateOfType<OverlayState>();
       final overlay = context.findAncestorStateOfType<OverlayState>();
       (showCaseOverlay ?? overlay)?.insert(overlayEntry);
     }
@@ -212,8 +207,7 @@ class _OverlayBuilderState extends State<OverlayBuilder> {
   }
 
   void buildOverlay() async {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => _overlayEntry?.markNeedsBuild());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _overlayEntry?.markNeedsBuild());
   }
 
   @override
